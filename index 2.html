@@ -1,0 +1,1921 @@
+<!DOCTYPE html>
+
+<html lang="en" style="--navy: #002e7a; --navy-2: #000000; --orange: #b51a00; --aqua: #eef2f5; --cream: #f4f5f6; --steel: #47515f;"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#080b10" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="Batting Order" name="apple-mobile-web-app-title"/>
+<link href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2222%22%20fill%3D%22%23112543%22%2F%3E%3Cpath%20d%3D%22M60%2012%2099%2028v30c0%2026-19%2040-39%2051C40%2098%2021%2084%2021%2058V28Z%22%20fill%3D%22none%22%20stroke%3D%22%23e1a46b%22%20stroke-width%3D%225%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2257%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2230%22%20text-anchor%3D%22middle%22%20font-weight%3D%22bold%22%20fill%3D%22%23fff%22%3E5%E2%98%85%3C%2Ftext%3E%3Ctext%20x%3D%2260%22%20y%3D%2276%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2211%22%20text-anchor%3D%22middle%22%20font-weight%3D%22bold%22%20fill%3D%22%23fff%22%3ECALL%3C%2Ftext%3E%3C%2Fsvg%3E" rel="icon"/>
+<title>5 Star Call | Batting Order</title>
+<style>
+    :root {
+      --navy: #080b10;
+      --navy-2: #1a2230;
+      --orange: #8f1f2d;
+      --yellow: #d9e0e7;
+      --aqua: #eef2f5;
+      --aqua-2: #9aa7b4;
+      --cream: #f4f5f6;
+      --ink: #171c24;
+      --muted: #64707d;
+      --line: #c4c9cf;
+      --green: #8f1f2d;
+      --red: #8f1f2d;
+      --white: #fff;
+      --steel: #47515f;
+      --steel-2: #cdd3d9;
+      --shadow: 0 16px 38px rgba(8, 11, 16, .18);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(143, 31, 45, .16), transparent 30rem),
+        radial-gradient(circle at 88% 10%, rgba(71, 81, 95, .18), transparent 28rem),
+        linear-gradient(180deg, #f7f8f9 0, #eceff2 45%, #dde2e7 100%);
+      font: 16px/1.45 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+
+    .app {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 22px 0 56px;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+      padding: 24px 28px;
+      color: white;
+      border-radius: 24px;
+      background:
+        linear-gradient(110deg, rgba(255,255,255,.09), transparent 36%),
+        linear-gradient(135deg, #050609 0%, #171c24 52%, #52131d 100%);
+      border: 1px solid rgba(210, 216, 222, .22);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      width: 128px;
+      height: 128px;
+      flex: 0 0 auto;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 14px rgba(0, 0, 0, .44));
+    }
+
+    .eyebrow {
+      margin: 0 0 4px;
+      color: #d6dde4;
+      font-size: .78rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+    }
+
+    .hero p:last-child {
+      margin: 9px 0 0;
+      color: #e7ebef;
+    }
+
+    .hero-actions { display: flex; gap: 9px; flex-wrap: wrap; justify-content: flex-end; }
+
+    .customize-button {
+      align-self: flex-start;
+      padding: 6px 9px;
+      border-radius: 8px;
+      font-size: .72rem;
+      opacity: .78;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 10px 14px;
+      color: var(--navy);
+      background: white;
+      font-weight: 800;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 18px rgba(8, 27, 44, .16); }
+    .btn.primary { background: var(--orange); color: white; border-color: #b94351; }
+    #addTech {
+      color: white;
+      background: linear-gradient(180deg, #b02f3e, #781925);
+      border-color: #c45260;
+    }
+    #addTech:hover { background: linear-gradient(180deg, #bf3a49, #8f1f2d); }
+    .btn.soft { background: var(--aqua); color: var(--navy); border-color: var(--aqua-2); }
+    .btn.ghost { background: transparent; color: white; border-color: rgba(255,255,255,.35); }
+    .btn.danger { color: var(--red); border-color: #ecc5bf; background: #fff8f7; }
+    .btn.small { padding: 7px 10px; font-size: .86rem; border-radius: 9px; }
+    #deleteTeam { display: none; }
+    body.editing #deleteTeam { display: inline-block; }
+
+    .switcher {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
+      margin: 18px 0;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 7px 20px rgba(23, 28, 36, .08);
+    }
+
+    .switcher button {
+      padding: 13px 16px;
+      border: 0;
+      border-radius: 12px;
+      color: var(--muted);
+      background: transparent;
+      font-weight: 850;
+    }
+
+    .switcher button[aria-selected="true"] {
+      color: white;
+      background: linear-gradient(135deg, #080b10, #323b47);
+      box-shadow: 0 5px 12px rgba(23, 28, 36, .24);
+    }
+
+    .switcher .add-team-button {
+      border: 1px dashed var(--aqua-2);
+      color: var(--navy);
+      background: rgba(238,242,245,.72);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .summary-card, .panel {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 7px 20px rgba(23, 28, 36, .08);
+    }
+
+    .summary-card { padding: 17px 19px; }
+    .summary-card .label {
+      color: var(--muted);
+      font-size: .74rem;
+      font-weight: 850;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .summary-card .value {
+      display: block;
+      margin-top: 4px;
+      color: var(--navy);
+      font-size: 1.45rem;
+      font-weight: 900;
+      letter-spacing: -.025em;
+    }
+
+    .warning {
+      margin: 0 0 18px;
+      padding: 13px 16px;
+      border: 1px solid #eed88e;
+      border-radius: 14px;
+      color: #6a4a00;
+      background: #fff8d9;
+      font-size: .92rem;
+    }
+
+    .panel { overflow: hidden; }
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .panel-head h2 { margin: 0; font-size: 1.15rem; color: var(--navy); }
+    .panel-head p { margin: 3px 0 0; color: var(--muted); font-size: .9rem; }
+    .panel-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+
+    .leaderboard { padding: 8px 14px 14px; }
+    .tech {
+      margin-top: 9px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .tech-main {
+      display: grid;
+      grid-template-columns: 52px minmax(160px, 1fr) 130px 120px;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 16px;
+    }
+
+    .rank {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      color: white;
+      background: var(--navy);
+      font-weight: 900;
+    }
+
+    .tech:first-child .rank {
+      color: var(--navy);
+      background: linear-gradient(145deg, #ffffff, var(--steel-2));
+      border: 1px solid #8d98a5;
+      box-shadow: inset 0 0 0 2px rgba(255,255,255,.55);
+    }
+    .tech-name { font-size: 1.05rem; font-weight: 900; color: var(--navy); }
+    .tech-sub { color: var(--muted); font-size: .83rem; }
+
+    .score-wrap { text-align: right; }
+    .score {
+      color: var(--navy);
+      font-size: 1.42rem;
+      font-weight: 950;
+      letter-spacing: -.03em;
+    }
+    .score-label { display: block; color: var(--muted); font-size: .72rem; font-weight: 800; text-transform: uppercase; }
+
+    .meter {
+      height: 8px;
+      overflow: hidden;
+      border-radius: 99px;
+      background: #e4e7ea;
+    }
+    .meter span {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #4a5360, #8f1f2d);
+    }
+
+    .details { display: none; padding: 0 16px 16px; }
+    .tech.open .details { display: block; }
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1.5fr .75fr .75fr .7fr;
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: var(--line);
+    }
+
+    .metric-grid > div {
+      min-width: 0;
+      padding: 10px;
+      background: #fff;
+    }
+    .metric-grid .grid-head {
+      color: var(--muted);
+      background: #f2f3f5;
+      font-size: .72rem;
+      font-weight: 850;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .metric-input, .setting-input, .name-input {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid #bccbd3;
+      border-radius: 8px;
+      padding: 8px 9px;
+      color: var(--navy);
+      background: var(--cream);
+      font-weight: 800;
+    }
+    .input-shell {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid #bccbd3;
+      border-radius: 8px;
+      color: var(--navy);
+      background: var(--cream);
+    }
+    .input-shell:focus-within {
+      border-color: #8f1f2d;
+      box-shadow: 0 0 0 2px rgba(143, 31, 45, .18);
+    }
+    .input-shell .metric-input,
+    .input-shell .setting-input {
+      border: 0;
+      border-radius: 0;
+      outline: 0;
+      background: transparent;
+      box-shadow: none;
+    }
+    .input-affix {
+      flex: 0 0 auto;
+      padding: 0 0 0 10px;
+      color: var(--muted);
+      font-weight: 900;
+    }
+    .input-affix.suffix { padding: 0 10px 0 0; }
+    .metric-score { font-weight: 900; color: var(--green); text-align: right; }
+    .tech-tools { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-top: 11px; flex-wrap: wrap; }
+    .rename-inline-label { font-size: .78rem; font-weight: 750; color: var(--muted); }
+    .rename-inline-input { width: min(250px, 100%); }
+
+    .settings { display: none; padding: 18px; }
+    .settings.visible { display: block; }
+    .settings-grid {
+      display: grid;
+      grid-template-columns: minmax(180px,1.6fr) minmax(105px,.72fr) minmax(88px,.58fr) minmax(90px,.62fr);
+      gap: 9px;
+      align-items: center;
+    }
+    .settings-grid .head { color: var(--muted); font-size: .72rem; font-weight: 850; text-transform: uppercase; }
+    .settings-grid + .settings-grid { margin-top: 9px; }
+    .metric-type { width:100%; min-width:0; padding:8px 7px; border:1px solid #bccbd3; border-radius:8px; background:var(--cream); color:var(--navy); font-weight:700; }
+    @media (max-width: 760px) {
+      .settings-grid { grid-template-columns: minmax(135px, 1.4fr) minmax(90px, .8fr) minmax(85px, .7fr) minmax(80px, .6fr); font-size:.8rem; }
+      .settings { overflow-x:auto; }
+      .settings-grid { min-width: 560px; }
+    }
+    .weight-total { margin: 13px 0 0; color: var(--muted); font-size: .88rem; }
+
+    .empty { padding: 34px; text-align: center; color: var(--muted); }
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 5;
+      max-width: min(360px, calc(100% - 40px));
+      padding: 12px 15px;
+      border-radius: 12px;
+      color: white;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(14px);
+      pointer-events: none;
+      transition: .2s ease;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    .share-modal[hidden] { display: none; }
+    .share-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(3, 19, 31, .72);
+    }
+    .share-card {
+      width: min(560px, 100%);
+      padding: 22px;
+      border: 1px solid #aeb6bf;
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .3);
+    }
+    .share-card h2 { margin: 0; color: var(--navy); }
+    .share-card p { margin: 7px 0 14px; color: var(--muted); }
+    .share-link {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid #aeb6bf;
+      border-radius: 9px;
+      color: var(--navy);
+      background: var(--cream);
+    }
+    .share-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 13px; }
+
+    .editor-bar {
+      position: fixed;
+      z-index: 30;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px max(18px, calc((100% - 1180px) / 2));
+      color: white;
+      background: #080b10;
+      box-shadow: 0 -5px 22px rgba(8,11,16,.32);
+    }
+    .editor-bar[hidden] { display: none; }
+    .editor-message strong { display: block; }
+    .editor-message span { color: rgba(255,255,255,.68); font-size: .75rem; }
+    .editor-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .editor-actions button {
+      min-height: 37px;
+      padding: 7px 11px;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 8px;
+      color: white;
+      background: rgba(255,255,255,.08);
+      font-weight: 800;
+    }
+    .editor-actions .editor-primary { color: var(--navy); background: white; }
+    body.editing .app { padding-bottom: 150px; }
+    [data-editor-target] {
+      outline: 2px dashed rgba(217,224,231,.70);
+      outline-offset: 4px;
+      border-radius: 3px;
+      cursor: text;
+    }
+    [data-editor-target]:focus { outline: 3px solid var(--yellow); background: rgba(255,255,255,.96); color: var(--ink); }
+
+    .customizer {
+      position: fixed;
+      z-index: 40;
+      top: 18px;
+      right: 18px;
+      bottom: 78px;
+      width: min(520px, calc(100% - 36px));
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 24px 70px rgba(7,25,46,.34);
+    }
+    .customizer[hidden] { display: none; }
+    .customizer-head {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 17px;
+      color: white;
+      background: var(--navy);
+    }
+    .customizer-head h2 { margin: 0; color: white; font-size: 1.25rem; }
+    .customizer-head p { margin: 3px 0 0; color: rgba(255,255,255,.72); font-size: .78rem; }
+    .customizer-close { width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.34); border-radius: 50%; color: white; background: transparent; font-size: 1.2rem; }
+    .customizer-body { padding: 17px; }
+    .customizer-section { padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .customizer-section:last-child { padding-bottom: 0; margin-bottom: 0; border-bottom: 0; }
+    .customizer-section h3 { margin: 0 0 4px; color: var(--navy); }
+    .customizer-section .help { margin: 0 0 12px; color: var(--muted); font-size: .8rem; }
+    .custom-field { margin-bottom: 13px; }
+    .custom-field label { display: block; margin-bottom: 5px; color: var(--navy); font-size: .82rem; font-weight: 800; }
+    .custom-field input[type="text"], .custom-field input[type="file"] { width: 100%; padding: 9px 10px; border: 1px solid var(--line); border-radius: 8px; color: var(--ink); background: var(--cream); }
+    .custom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+    .palette-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .palette-field { display: grid; grid-template-columns: 46px 1fr; align-items: center; gap: 9px; }
+    .palette-field input { width: 46px; height: 42px; padding: 2px; border: 1px solid var(--line); border-radius: 8px; background: white; cursor: pointer; }
+    .palette-field label { color: var(--navy); font-size: .8rem; font-weight: 800; line-height: 1.15; }
+    .palette-field label span { display: block; margin-top: 2px; color: var(--muted); font-size: .68rem; font-weight: 500; }
+    .customizer-foot {
+      position: sticky;
+      bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 13px 17px;
+      border-top: 1px solid var(--line);
+      background: white;
+    }
+
+    @media (max-width: 760px) {
+      .app { width: min(100% - 18px, 1180px); padding-top: 9px; }
+      .hero { align-items: flex-start; flex-direction: column; padding: 21px; border-radius: 18px; }
+      .brand { align-items: flex-start; gap: 13px; }
+      .brand-logo { width: 86px; height: 86px; }
+      .hero-actions { justify-content: flex-start; }
+      .customize-button { order: 10; }
+      .summary { grid-template-columns: 1fr; gap: 8px; }
+      .summary-card { display: flex; align-items: center; justify-content: space-between; padding: 13px 15px; }
+      .summary-card .value { margin: 0; font-size: 1.12rem; }
+      .panel-head { align-items: flex-start; flex-direction: column; }
+      .panel-actions { justify-content: flex-start; }
+      .tech-main { grid-template-columns: 42px minmax(0, 1fr) 88px; }
+      .tech-main .meter { display: none; }
+      .metric-grid { grid-template-columns: 1.4fr .75fr .75fr; }
+      .metric-grid .attain { display: none; }
+      .settings-grid { grid-template-columns: minmax(135px, 1.4fr) minmax(90px,.8fr) minmax(85px,.7fr) minmax(80px,.6fr); min-width:560px; }
+      .editor-bar { display: block; }
+      .editor-actions { justify-content: flex-start; margin-top: 10px; }
+      .custom-grid, .palette-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ARMOR v1.3: compact, same-line coaching indicators */
+    .tech-main {
+      grid-template-columns: 42px minmax(170px, 1.15fr) minmax(0, 3.5fr) 88px;
+      gap: 12px;
+      padding: 12px 15px;
+      align-items: center;
+    }
+    .tech-name { font-size: .99rem; line-height: 1.2; }
+    .tech-sub { margin-top: 3px; font-size: .73rem; }
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 6px;
+      min-width: 0;
+      align-items: stretch;
+    }
+    .kpi-chip {
+      min-width: 0;
+      min-height: 54px;
+      padding: 6px 3px 5px;
+      border: 1px solid #8a9099;
+      border-radius: 8px;
+      background: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+    .kpi-chip.above { border-color: #16804a; }
+    .kpi-chip.below { border-color: #b52e2c; }
+    .kpi-chip.at, .kpi-chip.no-target { border-color: #a0a8b2; }
+    .kpi-name {
+      display: block;
+      max-width: 100%;
+      color: #536071;
+      font-size: .61rem;
+      line-height: 1.1;
+      font-weight: 750;
+      overflow-wrap: anywhere;
+    }
+    .kpi-value {
+      display: block;
+      max-width: 100%;
+      color: #566273;
+      font-size: .97rem;
+      line-height: 1.05;
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+      overflow-wrap: anywhere;
+    }
+    .kpi-chip.above .kpi-value { color: #12653c; }
+    .kpi-chip.below .kpi-value { color: #992320; }
+    .score-wrap { text-align: right; }
+    .score { font-size: 1.35rem; }
+    .score-label { font-size: .62rem; }
+    .kpi-legend { padding: 7px 20px 0; color: #556273; font-size: .75rem; }
+    .kpi-legend strong { color: #102948; }
+    /* v1.5.3: All five KPI boxes stay beside the name on every viewport.
+       Narrow displays scroll each technician row horizontally instead of wrapping. */
+    .tech-main { grid-template-columns: 42px minmax(165px, 1.15fr) minmax(390px, 3.5fr) 88px; }
+    @media (max-width: 920px) {
+      .tech { overflow-x: auto; }
+      .tech-main {
+        min-width: 790px;
+        grid-template-columns: 42px 165px minmax(390px, 1fr) 88px;
+        gap: 9px;
+      }
+      .tech-main .kpi-strip { grid-column: 3; grid-row: 1; }
+    }
+    @media (max-width: 460px) {
+      .tech-main { padding: 11px; }
+      .kpi-chip { min-height: 54px; }
+    }
+  
+/* v1.5 import safety patch: no changes to the overall design */
+.import-review[hidden] { display:none; }
+.import-review { position:fixed; inset:0; z-index:100; background:rgba(5,12,25,.75); display:grid; place-items:center; padding:16px; }
+.import-dialog { width:min(920px,100%); max-height:92vh; overflow:auto; background:white; border-radius:17px; padding:22px; color:#182330; box-shadow:0 22px 80px rgba(0,0,0,.4); }
+.import-dialog h2 { margin:0 0 5px; } .import-dialog p { margin:5px 0 13px; color:#566276; }
+.import-grid { display:grid; grid-template-columns:minmax(150px,1fr) minmax(180px,1fr); gap:9px 16px; align-items:center; }
+.import-grid label { font-weight:750; font-size:.87rem; }
+.import-grid select { width:100%; padding:9px; background:#fff; border:1px solid #9ba8b9; border-radius:8px; font:inherit; }
+.import-panel { margin:14px 0; padding:14px; border:1px solid #d5dce5; border-radius:12px; background:#f7f9fb; }
+.import-actions { display:flex; gap:10px; justify-content:flex-end; flex-wrap:wrap; margin-top:15px; }
+.import-alert { color:#754900!important; background:#fff6dc; border:1px solid #ecd390; border-radius:9px; padding:10px; }
+.import-preview-list { font-size:.84rem; line-height:1.7; max-height:110px; overflow:auto; }
+.import-review .btn { border:1px solid #adb7c2; } .import-review .btn.primary { background:#1b3b66; color:white; }
+@media(max-width:600px){ .import-grid{grid-template-columns:1fr;} .import-dialog{padding:14px;} }
+.kpi-chip.no-target .kpi-value { color:#66788d; }
+</style>
+</head>
+<body class="" data-gr-ext-installed="" data-new-gr-c-s-check-loaded="9.101.0">
+<main class="app">
+<section class="hero">
+<div class="brand">
+<img alt="5 Star Call Batting Order" class="brand-logo" id="brandLogo" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2222%22%20fill%3D%22%23112543%22%2F%3E%3Cpath%20d%3D%22M60%2012%2099%2028v30c0%2026-19%2040-39%2051C40%2098%2021%2084%2021%2058V28Z%22%20fill%3D%22none%22%20stroke%3D%22%23e1a46b%22%20stroke-width%3D%225%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2257%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2230%22%20text-anchor%3D%22middle%22%20font-weight%3D%22bold%22%20fill%3D%22%23fff%22%3E5%E2%98%85%3C%2Ftext%3E%3Ctext%20x%3D%2260%22%20y%3D%2276%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2211%22%20text-anchor%3D%22middle%22%20font-weight%3D%22bold%22%20fill%3D%22%23fff%22%3ECALL%3C%2Ftext%3E%3C%2Fsvg%3E"/>
+<div class="brand-copy">
+<p class="eyebrow">5 STAR CALL · BATTING ORDER</p>
+<h1>Batting Order</h1>
+<p>Right Tech. Right Call. Better Coaching.</p>
+</div>
+</div>
+<div class="hero-actions">
+<button class="btn ghost" id="copyLink">Copy Team Link</button>
+<button class="btn ghost" id="importTechs">Import Tech List</button>
+<button class="btn primary" id="addTech">+ Add Technician</button>
+<button aria-pressed="false" class="btn ghost customize-button" id="editToggle" type="button">Customize tool</button>
+<input accept=".xlsx,.xls,.csv" hidden="" id="techFile" type="file"/>
+</div>
+</section>
+<div aria-labelledby="importReviewTitle" aria-modal="true" class="import-review" hidden="" id="importReview" role="dialog">
+<section class="import-dialog">
+<h2 id="importReviewTitle">Review technician import</h2>
+<p id="importReportInfo">Check the destination and metric mapping before changing any data.</p>
+<div class="import-panel"><div class="import-grid">
+<label for="importDestination">Destination batting order</label><select id="importDestination"></select>
+<label for="importExisting">Technicians already on this team</label>
+<select id="importExisting"><option value="skip">Skip duplicate names (recommended)</option><option value="update">Update matched KPI fields for duplicates</option></select>
+</div></div>
+<div class="import-panel"><strong>Metric mapping</strong><p>Only exact metric names are mapped automatically. Choose another source column only when its definition genuinely matches the destination KPI. Unmatched fields stay blank.</p><div class="import-grid" id="importMappings"></div></div>
+<div class="import-panel"><label style="display:flex;align-items:center;gap:9px;font-weight:700"><input checked="" id="rememberImportMap" type="checkbox"/> Remember this mapping for this team and report layout</label><p id="savedMappingStatus" style="margin:6px 0 0;color:#64707d;font-size:.85rem">A mapping will be saved only after you approve the import. Changes to the report columns will require a new review.</p></div>
+<div class="import-panel"><button class="btn soft small" type="button" id="createReportTeam">Create new team from this report's KPIs</button><p class="help" style="font-size:.78rem;margin:7px 0 0">Recommended when your team KPI labels don't match the spreadsheet. Creates a separate team with correctly labeled KPIs and blank targets/weights. No existing team is changed.</p></div>
+<div class="import-panel"><strong>Detected technicians</strong><div class="import-preview-list" id="importNames"></div></div>
+<p aria-live="polite" class="import-alert" id="importAlert"></p>
+<div class="import-actions"><button class="btn" id="cancelImport" type="button">Cancel</button><button class="btn primary" id="confirmImport" type="button">Import reviewed data</button></div>
+</section>
+</div>
+<nav aria-label="Batting orders" class="switcher" id="teamSwitcher">
+<button aria-selected="false" data-team="selling" type="button">
+          Selling Tech
+        </button>
+<button aria-selected="false" data-team="service" type="button">
+          Service
+        </button>
+<button aria-selected="false" data-team="maintenance" type="button">
+          Maintenance
+        </button>
+<button aria-selected="false" data-team="comfort-advisor" type="button">
+          Mon-Stars
+        </button>
+<button aria-selected="true" data-team="team-mw40k51v-zfu8i" type="button">
+          A-TEAM
+        </button>
+<button class="add-team-button" id="addTeam" type="button">+ Add Team</button></nav>
+<section class="summary" id="summary">
+<article class="summary-card"><span class="label">Top Performer</span><span class="value">—</span></article>
+<article class="summary-card"><span class="label">Team Average</span><span class="value">—</span></article>
+<article class="summary-card"><span class="label">Performance Window</span><span class="value">—</span></article></section>
+<div id="warning"></div>
+<section class="panel">
+<header class="panel-head">
+<div>
+<h2 id="panelTitle">Batting Order</h2>
+<p>Technicians automatically rank by weighted score.</p>
+</div>
+<div class="panel-actions">
+<button class="btn soft small" id="renameTeam">Rename Team</button>
+<button class="btn danger small" id="deleteTeam">Delete Team</button>
+<button class="btn soft small" id="toggleSettings">Targets &amp; Weights</button>
+<button class="btn small" id="resetData">Reset Team</button>
+</div>
+</header>
+<div class="settings" id="settings"></div>
+<div class="leaderboard" id="leaderboard">No technicians yet. Add the first one to begin this batting order.</div>
+</section>
+</main>
+<div class="share-modal" hidden="" id="shareModal">
+<section aria-labelledby="shareTitle" aria-modal="true" class="share-card" role="dialog">
+<h2 id="shareTitle">Team Link Ready</h2>
+<p>Copy this link and send it to the team. It carries the complete market setup.</p>
+<input aria-label="Team Link" class="share-link" id="shareLinkField" readonly=""/>
+<div class="share-actions">
+<button class="btn small" id="closeShare">Close</button>
+<button class="btn primary small" id="copyShare">Copy Link</button>
+</div>
+</section>
+</div>
+<div aria-live="polite" class="toast" id="toast" role="status"></div>
+<aside aria-label="Batting order editing controls" class="editor-bar" hidden="" id="editorBar">
+<div aria-live="polite" class="editor-message" role="status">
+<strong id="editorStatus">Customization saved in this browser</strong>
+<span>Click outlined wording to edit it. Logo, colors, and labels are under Market settings.</span>
+</div>
+<div class="editor-actions">
+<button id="openCustomizer" type="button">Market settings</button>
+<button id="saveCustomization" type="button">Save draft here</button>
+<button class="editor-primary" id="downloadCustomized" type="button">Download customized file</button>
+<button id="restoreCustomization" type="button">Restore design</button>
+<button id="finishEditing" type="button">Finish</button>
+</div>
+</aside>
+<aside aria-label="Market settings" class="customizer" hidden="" id="customizer">
+<div class="customizer-head">
+<div><h2>Market settings</h2><p>Change the logo, colors, and summary labels.</p></div>
+<button aria-label="Close market settings" class="customizer-close" id="closeCustomizer" type="button">×</button>
+</div>
+<div class="customizer-body">
+<section class="customizer-section">
+<h3>Market logo</h3>
+<p class="help">Use a PNG, JPG, GIF, WebP, or SVG file up to 2 MB. The logo is embedded in downloaded copies.</p>
+<div class="custom-field"><label for="logoFile">Choose logo file</label><input accept="image/png,image/jpeg,image/gif,image/webp,image/svg+xml" id="logoFile" type="file"/></div>
+<div class="custom-field"><label for="logoAlt">Logo description</label><input id="logoAlt" maxlength="100" type="text" value="Atlantic North HVAC Performance"/></div>
+<button class="btn soft small" id="removeLogo" type="button">Use original ARMOR logo</button>
+</section>
+<section class="customizer-section">
+<h3>Market color scheme</h3>
+<p class="help">Color changes appear immediately.</p>
+<div class="palette-grid">
+<div class="palette-field"><input data-color-var="--navy" id="colorNavy" type="color"/><label for="colorNavy">Primary dark<span>Headings and controls</span></label></div>
+<div class="palette-field"><input data-color-var="--navy-2" id="colorNavy2" type="color"/><label for="colorNavy2">Secondary dark<span>Header gradient</span></label></div>
+<div class="palette-field"><input data-color-var="--orange" id="colorOrange" type="color"/><label for="colorOrange">Market accent<span>Primary actions</span></label></div>
+<div class="palette-field"><input data-color-var="--aqua" id="colorAqua" type="color"/><label for="colorAqua">Light accent<span>Settings and panels</span></label></div>
+<div class="palette-field"><input data-color-var="--cream" id="colorCream" type="color"/><label for="colorCream">Input background<span>Editable values</span></label></div>
+<div class="palette-field"><input data-color-var="--steel" id="colorSteel" type="color"/><label for="colorSteel">Score accent<span>Meters and details</span></label></div>
+</div>
+<button class="btn soft small" id="resetPalette" style="margin-top:12px" type="button">Reset colors</button>
+</section>
+<section class="customizer-section">
+<h3>Display labels</h3>
+<div class="custom-grid">
+<div class="custom-field"><label for="topLabel">Top performer label</label><input id="topLabel" maxlength="60" type="text"/></div>
+<div class="custom-field"><label for="averageLabel">Team average label</label><input id="averageLabel" maxlength="60" type="text"/></div>
+<div class="custom-field"><label for="windowLabel">Performance window label</label><input id="windowLabel" maxlength="60" type="text"/></div>
+</div>
+</section>
+</div>
+<div class="customizer-foot">
+<button class="btn soft small" id="resetLabels" type="button">Reset labels</button>
+<button class="btn primary small" id="applyMarketSettings" type="button">Apply settings</button>
+</div>
+</aside>
+<script id="embeddedCustomization" type="application/json">{"palette":{"--navy":"#112543","--navy-2":"#071527","--orange":"#c45723","--aqua":"#e8f1f7","--cream":"#f5f7fa","--steel":"#465f79"},"logoData":"","logoAlt":"5 Star Call Batting Order","topLabel":"Top Performer","averageLabel":"Team Average","windowLabel":"Performance Window"}</script>
+<script id="embeddedCopy" type="application/json">["5 STAR CALL \u00b7 BATTING ORDER","Batting Order","Right Tech. Right Call. Better Coaching.","Technicians automatically rank by weighted score.","Team Link Ready","Copy this link and send it to the team. It carries the complete market setup."]</script>
+<script id="embeddedState" type="application/json">{"schemaVersion":3,"activeTeam":"service","teamOrder":["selling","service","maintenance","comfort-advisor","team-mw40k51v-zfu8i"],"windowDays":14,"teams":{"selling":{"label":"Selling Tech","metrics":[{"name":"Maintenance Plan Conversion","target":0,"weight":0,"type":"percent"},{"name":"Replacement Lead Conversion","target":0,"weight":0,"type":"percent"},{"name":"Average Ticket","target":0,"weight":0,"type":"currency"},{"name":"5-Star Google Reviews","target":0,"weight":0,"type":"number"},{"name":"IAQ Options per Opportunity","target":0,"weight":0,"type":"decimal"}],"technicians":[]},"service":{"label":"Service","metrics":[{"name":"Mainteny","target":0,"weight":0,"type":"percent"},{"name":"Replacement Lead Conversion","target":0,"weight":0,"type":"percent"},{"name":"Average Ticket","target":0,"weight":0,"type":"currency"},{"name":"5-Star Google Reviews","target":0,"weight":0,"type":"number"},{"name":"IAQ Options per Opportunity","target":0,"weight":0,"type":"decimal"}],"technicians":[]},"maintenance":{"label":"Maintenance","metrics":[{"name":"Maintenance Plan Conversion","target":0,"weight":0,"type":"percent"},{"name":"Replacement Lead Conversion","target":0,"weight":0,"type":"percent"},{"name":"Average Ticket","target":0,"weight":0,"type":"currency"},{"name":"5-Star Google Reviews","target":0,"weight":0,"type":"number"},{"name":"IAQ Options per Opportunity","target":0,"weight":0,"type":"decimal"}],"technicians":[]},"comfort-advisor":{"label":"Mon-Stars","metrics":[{"name":"Converted job average","target":0,"weight":0,"type":"percent"},{"name":"Opportunity conversion rate","target":0,"weight":0,"type":"currency"},{"name":"Total sales","target":0,"weight":0,"type":"percent"},{"name":"Options per opportunity","target":0,"weight":0,"type":"percent"},{"name":"Membership conversion rate","target":0,"weight":0,"type":"number"}],"technicians":[]},"team-mw40k51v-zfu8i":{"label":"A-TEAM","metrics":[{"name":"Maintenance Plan Conversion","target":0,"weight":0,"type":"percent"},{"name":"Replacement Lead Conversion","target":0,"weight":0,"type":"percent"},{"name":"Average Ticket","target":0,"weight":0,"type":"currency"},{"name":"5-Star Google Reviews","target":0,"weight":0,"type":"number"},{"name":"IAQ Options per Opportunity","target":0,"weight":0,"type":"decimal"}],"technicians":[]}}}</script>
+<script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+<script>
+    const STORAGE_KEY = "hvac-performance-batting-order-v3";
+    const CUSTOMIZATION_KEY = "hvac-performance-batting-order-customization-v1";
+    const COPY_KEY = "hvac-performance-batting-order-copy-v1";
+    const clone = value => JSON.parse(JSON.stringify(value));
+    const DEFAULT_CUSTOMIZATION = {
+      palette: {
+        "--navy": "#080b10",
+        "--navy-2": "#1a2230",
+        "--orange": "#8f1f2d",
+        "--aqua": "#eef2f5",
+        "--cream": "#f4f5f6",
+        "--steel": "#47515f"
+      },
+      logoData: "",
+      logoAlt: "Atlantic North HVAC Performance",
+      topLabel: "Top Performer",
+      averageLabel: "Team Average",
+      windowLabel: "Performance Window"
+    };
+
+    function embeddedJson(id, fallback = null) {
+      try {
+        return JSON.parse(document.getElementById(id)?.textContent || "null") || fallback;
+      } catch (_) {
+        return fallback;
+      }
+    }
+
+    function loadCustomization() {
+      const embedded = embeddedJson("embeddedCustomization", {});
+      try {
+        return { ...clone(DEFAULT_CUSTOMIZATION), ...embedded, ...JSON.parse(localStorage.getItem(CUSTOMIZATION_KEY) || "null") };
+      } catch (_) {
+        return { ...clone(DEFAULT_CUSTOMIZATION), ...embedded };
+      }
+    }
+
+    let customization = loadCustomization();
+
+    function applyPalette(palette = customization.palette) {
+      Object.entries(palette || {}).forEach(([name, value]) => {
+        if (/^#[0-9a-f]{6}$/i.test(value)) document.documentElement.style.setProperty(name, value);
+      });
+    }
+
+    const originalLogoSrc = "data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2222%22%20fill%3D%22%23112543%22%2F%3E%3Cpath%20d%3D%22M60%2012%2099%2028v30c0%2026-19%2040-39%2051C40%2098%2021%2084%2021%2058V28Z%22%20fill%3D%22none%22%20stroke%3D%22%23e1a46b%22%20stroke-width%3D%225%22%2F%3E%3Ctext%20x%3D%2260%22%20y%3D%2257%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2230%22%20text-anchor%3D%22middle%22%20font-weight%3D%22bold%22%20fill%3D%22%23fff%22%3E5%E2%98%85%3C%2Ftext%3E%3Ctext%20x%3D%2260%22%20y%3D%2276%22%20font-family%3D%22Arial%2Csans-serif%22%20font-size%3D%2211%22%20text-anchor%3D%22middle%22%20font-weight%3D%22bold%22%20fill%3D%22%23fff%22%3ECALL%3C%2Ftext%3E%3C%2Fsvg%3E";
+    function renderLogo() {
+      const logo = document.getElementById("brandLogo");
+      logo.src = customization.logoData || originalLogoSrc;
+      logo.alt = customization.logoAlt || DEFAULT_CUSTOMIZATION.logoAlt;
+      document.getElementById("logoAlt").value = logo.alt;
+    }
+
+    const editableSelector = [
+      ".hero .eyebrow", ".hero h1", ".hero .brand-copy > p:last-child",
+      ".panel-head > div > p", ".share-card h2", ".share-card > p"
+    ].join(",");
+    const copyTargets = [...document.querySelectorAll(editableSelector)];
+    const baseCopy = copyTargets.map(element => element.innerHTML);
+    const embeddedCopy = embeddedJson("embeddedCopy", null);
+    function applyCopy(copy) {
+      if (!Array.isArray(copy)) return;
+      copyTargets.forEach((element, index) => {
+        if (typeof copy[index] === "string") element.innerHTML = copy[index];
+      });
+    }
+    try {
+      applyCopy(JSON.parse(localStorage.getItem(COPY_KEY) || "null") || embeddedCopy);
+    } catch (_) {
+      applyCopy(embeddedCopy);
+    }
+    const originalCopy = embeddedCopy || [...baseCopy];
+    applyPalette();
+    renderLogo();
+
+    function makeId() {
+      if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+      return `tech-${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+    }
+    const metricNames = [
+      "Maintenance Plan Conversion",
+      "Replacement Lead Conversion",
+      "Average Ticket",
+      "5-Star Google Reviews",
+      "IAQ Options per Opportunity"
+    ];
+
+    const defaults = {
+      schemaVersion: 3,
+      activeTeam: "selling",
+      teamOrder: ["selling", "service", "maintenance", "comfort-advisor"],
+      windowDays: 14,
+      teams: {
+        selling: {
+          label: "Selling Tech",
+          metrics: [
+            { name: metricNames[0], target: 0, weight: 0, type: "percent" },
+            { name: metricNames[1], target: 0, weight: 0, type: "percent" },
+            { name: metricNames[2], target: 0, weight: 0, type: "currency" },
+            { name: metricNames[3], target: 0, weight: 0, type: "number" },
+            { name: metricNames[4], target: 0, weight: 0, type: "decimal" }
+          ],
+          technicians: []
+        },
+        service: {
+          label: "Service",
+          metrics: [
+            { name: metricNames[0], target: 0, weight: 0, type: "percent" },
+            { name: metricNames[1], target: 0, weight: 0, type: "percent" },
+            { name: metricNames[2], target: 0, weight: 0, type: "currency" },
+            { name: metricNames[3], target: 0, weight: 0, type: "number" },
+            { name: metricNames[4], target: 0, weight: 0, type: "decimal" }
+          ],
+          technicians: []
+        },
+        maintenance: {
+          label: "Maintenance",
+          metrics: [
+            { name: metricNames[0], target: 0, weight: 0, type: "percent" },
+            { name: metricNames[1], target: 0, weight: 0, type: "percent" },
+            { name: metricNames[2], target: 0, weight: 0, type: "currency" },
+            { name: metricNames[3], target: 0, weight: 0, type: "number" },
+            { name: metricNames[4], target: 0, weight: 0, type: "decimal" }
+          ],
+          technicians: []
+        },
+        "comfort-advisor": {
+          label: "Comfort Advisor",
+          metrics: [
+            { name: "Sales Close Rate", target: 0, weight: 0, type: "percent" },
+            { name: "Average Sale", target: 0, weight: 0, type: "currency" },
+            { name: "Financing Approval Rate", target: 0, weight: 0, type: "percent" },
+            { name: "Gross Margin", target: 0, weight: 0, type: "percent" },
+            { name: "5-Star Google Reviews", target: 0, weight: 0, type: "number" }
+          ],
+          technicians: []
+        }
+      }
+    };
+
+    let state = loadState();
+    let settingsOpen = false;
+    let openTech = null;
+    let editingNameTech = null;
+
+    function loadState() {
+      const fromLink = location.hash.startsWith("#team=") ? location.hash.slice(6) : "";
+      if (fromLink) {
+        try {
+          const parsed = JSON.parse(decodeURIComponent(escape(atob(fromLink))));
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed));
+          history.replaceState(null, "", location.pathname + location.search);
+          setTimeout(() => notify("Team setup installed and saved in this browser."), 200);
+          return normalizeState(parsed);
+        } catch (_) {}
+      }
+      try {
+        return normalizeState(JSON.parse(localStorage.getItem(STORAGE_KEY)) || embeddedJson("embeddedState", null) || clone(defaults));
+      } catch (_) {
+        return clone(defaults);
+      }
+    }
+
+    function normalizeState(data) {
+      if (!data || !data.teams) return clone(defaults);
+      if (!data.schemaVersion) {
+        data.teams.selling ||= clone(defaults.teams.selling);
+        data.teams["comfort-advisor"] ||= clone(defaults.teams["comfort-advisor"]);
+        data.teamOrder = ["selling", "service", "maintenance", "comfort-advisor"]
+          .filter(id => data.teams[id]);
+        data.schemaVersion = 2;
+      }
+      if (Number(data.schemaVersion) < 3) {
+        Object.keys(data.teams).forEach(id => {
+          if (id === "selling" || id === "comfort-advisor" || !["service", "maintenance"].includes(id)) {
+            data.teams[id].metrics = metricsWithFiveExamples(data.teams[id].metrics);
+          }
+        });
+        data.schemaVersion = 3;
+      }
+      const teamIds = Object.keys(data.teams);
+      if (!teamIds.length) return clone(defaults);
+      const requestedOrder = Array.isArray(data.teamOrder) ? data.teamOrder : teamIds;
+      data.teamOrder = [...new Set([...requestedOrder.filter(id => data.teams[id]), ...teamIds])];
+      data.teamOrder.forEach(id => {
+        const current = data.teams[id];
+        current.label = String(current.label || "Untitled Team").trim() || "Untitled Team";
+        current.metrics = Array.isArray(current.metrics) && current.metrics.length
+          ? current.metrics
+          : clone(defaults.teams.service.metrics);
+        current.technicians = Array.isArray(current.technicians) ? current.technicians : [];
+      });
+      if (!data.teams[data.activeTeam]) data.activeTeam = data.teamOrder[0];
+      if (!Number(data.windowDays)) {
+        const oldDays = Number(String(data.window || "").match(/\d+/)?.[0]);
+        data.windowDays = oldDays || 14;
+      }
+      data.windowDays = Math.max(1, Math.round(Number(data.windowDays) || 14));
+      const maintenanceMetrics = data.teams?.maintenance?.metrics || [];
+      const maintenanceTotal = maintenanceMetrics.reduce((sum, metric) => sum + (Number(metric.weight) || 0), 0);
+      if (
+        maintenanceMetrics.length === 5 &&
+        Math.abs(maintenanceTotal - 1.1) < .0001 &&
+        Math.abs((Number(maintenanceMetrics[4].weight) || 0) - .2) < .0001
+      ) {
+        maintenanceMetrics[4].weight = .1;
+      }
+      return data;
+    }
+
+    function save() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function team() { return state.teams[state.activeTeam]; }
+
+    function metricsWithFiveExamples(metrics) {
+      const filled = clone(Array.isArray(metrics) ? metrics : []);
+      const examples = defaults.teams.service.metrics;
+      while (filled.length < 5) filled.push(clone(examples[filled.length] || examples[examples.length - 1]));
+      return filled;
+    }
+
+    // Incomplete / unconfigured records are not assigned a misleading rank.
+    function scoreTech(tech) {
+      const metrics = team().metrics;
+      const active = metrics.map((metric, index) => ({ metric, index })).filter(({metric}) => Number(metric.weight) > 0);
+      const weightTotal = active.reduce((sum, {metric}) => sum + Number(metric.weight), 0);
+      const missing = active.filter(({metric, index}) =>
+        !(Number(metric.target) > 0) ||
+        tech.actuals[index] === null || tech.actuals[index] === undefined || tech.actuals[index] === "" ||
+        !Number.isFinite(Number(tech.actuals[index])));
+      const detail = metrics.map((metric, index) => {
+        const raw = tech.actuals[index];
+        const actual = raw === null || raw === undefined || raw === "" ? null : Number(raw);
+        const target = Number(metric.target);
+        const attainment = actual !== null && Number.isFinite(actual) && target > 0 ? Math.min(1, Math.max(0, actual) / target) : 0;
+        return { attainment, points: weightTotal ? attainment * Math.max(0, Number(metric.weight) || 0) / weightTotal : 0 };
+      });
+      return {score: weightTotal && !missing.length ? detail.reduce((sum, item) => sum + item.points, 0) : null,
+              detail, missing:missing.map(({metric})=>metric.name), ready: Boolean(weightTotal && !missing.length)};
+    }
+
+    function percent(value) { return `${Math.round((Number(value) || 0) * 100)}%`; }
+    function formatMetric(value, type) {
+      const n = Number(value) || 0;
+      if (type === "percent") return percent(n);
+      if (type === "currency") return n.toLocaleString(undefined, { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+      return n.toLocaleString(undefined, { maximumFractionDigits: 1 });
+    }
+
+    function editableValue(value, type, forcePercent = false) {
+      if (value === null || value === undefined || value === "") return "";
+      const n = Number(value) || 0;
+      if (forcePercent || type === "percent") {
+        return Number((n * 100).toFixed(2)).toLocaleString(undefined, { maximumFractionDigits: 2 });
+      }
+      if (type === "currency") {
+        return Math.round(n).toLocaleString();
+      }
+      return Number(n.toFixed(2)).toLocaleString(undefined, { maximumFractionDigits: 2 });
+    }
+
+    function inputValue(value, type, forcePercent = false) {
+      const number = Number(String(value ?? "").replace(/[$,%\s]/g, "").replaceAll(",", "")) || 0;
+      return Math.max(0, forcePercent || type === "percent" ? number / 100 : number);
+    }
+
+    function inputShell({ value, type, attributes, forcePercent = false }) {
+      const prefix = type === "currency" ? '<span class="input-affix">$</span>' : "";
+      const suffix = forcePercent || type === "percent" ? '<span class="input-affix suffix">%</span>' : "";
+      return `<div class="input-shell">${prefix}<input ${attributes} type="text" inputmode="decimal" value="${escapeAttr(editableValue(value, type, forcePercent))}">${suffix}</div>`;
+    }
+
+    function sortedTechs() {
+      return [...team().technicians].map(tech => ({ ...tech, result: scoreTech(tech) }))
+        .sort((a, b) => (Number(b.result.ready) - Number(a.result.ready)) ||
+          ((b.result.score ?? 0) - (a.result.score ?? 0)) || a.name.localeCompare(b.name));
+    }
+
+    function renderTeamSwitcher() {
+      document.getElementById("teamSwitcher").innerHTML = state.teamOrder.map(id => `
+        <button type="button" data-team="${escapeAttr(id)}" aria-selected="${id === state.activeTeam}">
+          ${escapeHtml(state.teams[id].label)}
+        </button>`).join("") + `
+        <button type="button" class="add-team-button" id="addTeam">+ Add Team</button>`;
+    }
+
+    function render() {
+      renderTeamSwitcher();
+      document.getElementById("panelTitle").textContent = `${team().label} Leaderboard`;
+      document.getElementById("deleteTeam").disabled = state.teamOrder.length === 1;
+      renderSummary();
+      renderWarning();
+      renderSettings();
+      renderLeaderboard();
+    }
+
+    function trackingWindow() {
+      return `Trailing ${state.windowDays} ${state.windowDays === 1 ? "Day" : "Days"}`;
+    }
+
+    function renderSummary() {
+      const techs = sortedTechs();
+      const ranked = techs.filter(tech => tech.result.ready);
+      const avg = ranked.length ? ranked.reduce((sum, tech) => sum + tech.result.score, 0) / ranked.length : null;
+      document.getElementById("summary").innerHTML = `
+        <article class="summary-card"><span class="label">${escapeHtml(customization.topLabel)}</span><span class="value">${escapeHtml(techs.find(tech=>tech.result.ready)?.name || "—")}</span></article>
+        <article class="summary-card"><span class="label">${escapeHtml(customization.averageLabel)}</span><span class="value">${avg === null ? "Not ranked" : percent(avg)}</span></article>
+        <article class="summary-card"><span class="label">${escapeHtml(customization.windowLabel)}</span><span class="value">${trackingWindow()}</span></article>`;
+    }
+
+    function renderWarning() {
+      const total = team().metrics.reduce((sum, metric) => sum + (Number(metric.weight) || 0), 0);
+      const badTargets = team().metrics.filter(m => Number(m.weight) > 0 && !(Number(m.target) > 0));
+      document.getElementById("warning").innerHTML = !total
+        ? `<p class="warning"><strong>Batting order not ranked:</strong> All KPI weights are 0%. Set targets and weights under Targets &amp; Weights before using rankings.</p>`
+        : badTargets.length
+        ? `<p class="warning"><strong>Ranking incomplete:</strong> Set a positive target for each weighted metric (${badTargets.map(m=>escapeHtml(m.name)).join(", ")}). Unranked technicians show N/A.</p>`
+        : Math.abs(total - 1) > .0001
+        ? `<p class="warning"><strong>Weights total ${percent(total)}.</strong> Positive weights normalize automatically. Technicians missing a weighted KPI remain unranked.</p>`
+        : "";
+    }
+
+    function renderSettings() {
+      const rows = team().metrics.map((metric, index) => `
+        <div class="settings-grid">
+          <input class="setting-input" data-setting="name" data-index="${index}" value="${escapeAttr(metric.name)}" aria-label="Metric ${index + 1} name">
+          ${inputShell({
+            value: metric.target,
+            type: metric.type,
+            attributes: `class="setting-input" data-setting="target" data-index="${index}" aria-label="${escapeAttr(metric.name)} target"`
+          })}
+          ${inputShell({
+            value: metric.weight,
+            type: "number",
+            forcePercent: true,
+            attributes: `class="setting-input" data-setting="weight" data-index="${index}" aria-label="${escapeAttr(metric.name)} weight"`
+          })}
+          <select class="metric-type" data-setting="type" data-index="${index}" aria-label="${escapeAttr(metric.name)} display format">
+            ${[["currency","Dollars ($)"],["percent","Percent (%)"],["number","Number"],["decimal","Decimal"]].map(([value,label])=>`<option value="${value}" ${metric.type === value ? "selected" : ""}>${label}</option>`).join("")}
+          </select>
+        </div>`).join("");
+      const total = team().metrics.reduce((sum, metric) => sum + (Number(metric.weight) || 0), 0);
+      const settings = document.getElementById("settings");
+      settings.className = `settings${settingsOpen ? " visible" : ""}`;
+      settings.innerHTML = `
+        <div class="settings-grid">
+          <strong>Trailing performance days</strong>
+          <input class="setting-input" data-setting="windowDays" type="number" min="1" max="365" step="1" value="${state.windowDays}" aria-label="Trailing performance days">
+          <span></span>
+        </div>
+        <hr style="border:0;border-top:1px solid var(--line);margin:16px 0">
+        <div class="settings-grid">
+          <span class="head">Metric</span><span class="head">Target</span><span class="head">Weight</span><span class="head">Format</span>
+        </div>
+        ${rows}
+        <p class="weight-total">Current weight total: <strong>${percent(total)}</strong>. A complete ranking requires positive weights, positive targets for weighted metrics, and actual data. Changing a KPI name or format does not change existing stored numbers.</p>`;
+    }
+
+    function kpiStatus(actualValue, targetValue) {
+      if (actualValue === null || actualValue === undefined || actualValue === "") return { cls: "no-target", label: "No data imported" };
+      const actual = Number(actualValue) || 0;
+      const target = Number(targetValue) || 0;
+      if (target <= 0) return { cls: "no-target", label: "Target not set" };
+      const difference = actual - target;
+      if (Math.abs(difference) <= Math.max(1, Math.abs(target)) * 1e-10) return { cls: "at", label: "At target" };
+      return difference > 0 ? { cls: "above", label: "Above target" } : { cls: "below", label: "Below target · coach" };
+    }
+
+    function renderLeaderboard() {
+      const techs = sortedTechs();
+      document.getElementById("leaderboard").innerHTML = techs.length ? techs.map((tech, rank) => {
+        const isOpen = openTech === tech.id;
+        const metricRows = team().metrics.map((metric, index) => `
+          <div>${escapeHtml(metric.name)}</div>
+          <div>${inputShell({
+            value: tech.actuals[index] ?? "",
+            type: metric.type,
+            attributes: `class="metric-input" data-tech="${tech.id}" data-metric="${index}" aria-label="${escapeAttr(tech.name)} ${escapeAttr(metric.name)} actual"`
+          })}</div>
+          <div class="attain">${percent(tech.result.detail[index].attainment)}</div>
+          <div class="metric-score">${percent(tech.result.detail[index].points)}</div>`).join("");
+        const kpiChips = team().metrics.map((metric, index) => {
+          const actual = tech.actuals[index];
+          const status = kpiStatus(actual, metric.target);
+          const actualDisplay = actual === null || actual === undefined ? "—" : formatMetric(actual, metric.type);
+          const targetDisplay = formatMetric(metric.target, metric.type);
+          return `<div class="kpi-chip ${status.cls}" title="${escapeAttr(metric.name)}: ${escapeAttr(actualDisplay)} actual, ${escapeAttr(targetDisplay)} target. ${escapeAttr(status.label)}">
+            <span class="kpi-name">${escapeHtml(metric.name)}</span>
+            <span class="kpi-value">${escapeHtml(actualDisplay)}</span>
+          </div>`;
+        }).join("");
+        return `
+          <article class="tech${isOpen ? " open" : ""}" data-card="${tech.id}">
+            <div class="tech-main">
+              <div class="rank">${tech.result.ready ? techs.filter(t=>t.result.ready).indexOf(tech)+1 : "—"}</div>
+              <div>
+                <div class="tech-name">${escapeHtml(tech.name)}</div>
+                <div class="tech-sub">${team().label} technician</div>
+              </div>
+              <div class="kpi-strip" aria-label="${escapeAttr(tech.name)} actual KPIs versus goals">${kpiChips}</div>
+              <div class="score-wrap">
+                <span class="score">${tech.result.ready ? percent(tech.result.score) : "N/A"}</span>
+                <span class="score-label">${tech.result.ready ? "Weighted Score" : "Not ranked"}</span>
+              </div>
+            </div>
+            <div class="details">
+              <div class="metric-grid">
+                <div class="grid-head">Metric</div><div class="grid-head">Actual</div><div class="grid-head attain">To Target</div><div class="grid-head">Points</div>
+                ${metricRows}
+              </div>
+              <div class="tech-tools">
+                ${editingNameTech === tech.id ? `
+                  <label class="rename-inline-label" for="rename-${escapeAttr(tech.id)}">Technician name</label>
+                  <input class="name-input rename-inline-input" id="rename-${escapeAttr(tech.id)}" data-rename-input="${escapeAttr(tech.id)}" value="${escapeAttr(tech.name)}" maxlength="120" aria-label="New name for ${escapeAttr(tech.name)}">
+                  <button type="button" class="btn small" data-save-rename="${escapeAttr(tech.id)}">Save name</button>
+                  <button type="button" class="btn small" data-cancel-rename="${escapeAttr(tech.id)}">Cancel</button>
+                ` : `
+                  <button type="button" class="btn small" data-rename="${escapeAttr(tech.id)}">Rename</button>
+                  <button type="button" class="btn danger small" data-remove="${escapeAttr(tech.id)}">Remove</button>
+                `}
+              </div>
+            </div>
+          </article>`;
+      }).join("") : `<div class="empty">No technicians yet. Add the first one to begin this batting order.</div>`;
+    }
+
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[character]));
+    }
+    function escapeAttr(value) { return escapeHtml(value); }
+
+    function notify(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(notify.timer);
+      notify.timer = setTimeout(() => toast.classList.remove("show"), 2400);
+    }
+
+    document.getElementById("teamSwitcher").addEventListener("click", event => {
+      if (event.target.closest("#addTeam")) {
+        const label = prompt("New team name");
+        if (!label?.trim()) return;
+        const id = `team-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 7)}`;
+        state.teams[id] = {
+          label: label.trim(),
+          metrics: metricsWithFiveExamples(team().metrics),
+          technicians: []
+        };
+        state.teamOrder.push(id);
+        state.activeTeam = id;
+        openTech = null;
+        settingsOpen = false;
+        save(); render();
+        notify(`${state.teams[id].label} batting order added.`);
+        return;
+      }
+      const button = event.target.closest("[data-team]");
+      if (!button) return;
+      state.activeTeam = button.dataset.team;
+      openTech = null;
+      settingsOpen = false;
+      save();
+      render();
+    });
+
+    document.getElementById("renameTeam").addEventListener("click", () => {
+      const label = prompt("Team name", team().label);
+      if (!label?.trim()) return;
+      team().label = label.trim();
+      save(); render();
+      notify("Team renamed.");
+    });
+
+    document.getElementById("deleteTeam").addEventListener("click", () => {
+      if (!editing) return;
+      if (state.teamOrder.length === 1) {
+        alert("Keep at least one batting order.");
+        return;
+      }
+      const id = state.activeTeam;
+      const label = team().label;
+      if (!confirm(`Delete the ${label} batting order and all of its technician data?`)) return;
+      const index = state.teamOrder.indexOf(id);
+      delete state.teams[id];
+      state.teamOrder = state.teamOrder.filter(teamId => teamId !== id);
+      state.activeTeam = state.teamOrder[Math.min(index, state.teamOrder.length - 1)];
+      openTech = null;
+      settingsOpen = false;
+      save(); render();
+      notify(`${label} batting order deleted.`);
+    });
+
+    document.getElementById("leaderboard").addEventListener("click", event => {
+      const remove = event.target.closest("[data-remove]");
+      if (remove) {
+        const tech = team().technicians.find(item => item.id === remove.dataset.remove);
+        if (tech && confirm(`Remove ${tech.name} from the ${team().label} batting order?`)) {
+          team().technicians = team().technicians.filter(item => item.id !== tech.id);
+          save(); render();
+        }
+        return;
+      }
+      const cancelRename = event.target.closest("[data-cancel-rename]");
+      if (cancelRename) {
+        editingNameTech = null;
+        renderLeaderboard();
+        return;
+      }
+      const saveRename = event.target.closest("[data-save-rename]");
+      if (saveRename) {
+        const id = saveRename.dataset.saveRename;
+        const tech = team().technicians.find(item => item.id === id);
+        const field = Array.from(document.querySelectorAll("[data-rename-input]")).find(item => item.dataset.renameInput === id);
+        const newName = field?.value.trim();
+        if (!tech || !newName) {
+          if (field) { field.setCustomValidity("Enter a technician name."); field.reportValidity(); }
+          return;
+        }
+        tech.name = newName;
+        editingNameTech = null;
+        save(); render();
+        notify(`Technician renamed to ${newName}.`);
+        return;
+      }
+      const rename = event.target.closest("[data-rename]");
+      if (rename) {
+        editingNameTech = rename.dataset.rename;
+        openTech = editingNameTech;
+        renderLeaderboard();
+        const field = Array.from(document.querySelectorAll("[data-rename-input]")).find(item => item.dataset.renameInput === editingNameTech);
+        if (field) { field.focus(); field.select(); }
+        return;
+      }
+      if (event.target.closest("input, button")) return;
+      const card = event.target.closest("[data-card]");
+      if (card) {
+        openTech = openTech === card.dataset.card ? null : card.dataset.card;
+        renderLeaderboard();
+      }
+    });
+
+    document.getElementById("leaderboard").addEventListener("keydown", event => {
+      const field = event.target.closest("[data-rename-input]");
+      if (!field) return;
+      if (event.key === "Enter") {
+        event.preventDefault();
+        const button = Array.from(document.querySelectorAll("[data-save-rename]")).find(item => item.dataset.saveRename === field.dataset.renameInput);
+        if (button) button.click();
+      } else if (event.key === "Escape") {
+        event.preventDefault();
+        editingNameTech = null;
+        renderLeaderboard();
+      } else {
+        field.setCustomValidity("");
+      }
+    });
+
+    document.getElementById("leaderboard").addEventListener("change", event => {
+      const input = event.target.closest("[data-tech][data-metric]");
+      if (!input) return;
+      const tech = team().technicians.find(item => item.id === input.dataset.tech);
+      if (tech) {
+        const metricIndex = Number(input.dataset.metric);
+        tech.actuals[metricIndex] = input.value.trim() === "" ? null : inputValue(input.value, team().metrics[metricIndex].type);
+        save(); render();
+      }
+    });
+
+    document.getElementById("leaderboard").addEventListener("input", event => {
+      const input = event.target.closest("[data-tech][data-metric]");
+      if (!input) return;
+      const tech = team().technicians.find(item => item.id === input.dataset.tech);
+      if (tech) {
+        const metricIndex = Number(input.dataset.metric);
+        tech.actuals[metricIndex] = input.value.trim() === "" ? null : inputValue(input.value, team().metrics[metricIndex].type);
+        save();
+      }
+    });
+
+    document.getElementById("settings").addEventListener("change", event => {
+      const input = event.target.closest("[data-setting]");
+      if (!input) return;
+      if (input.dataset.setting === "windowDays") {
+        state.windowDays = Math.max(1, Math.min(365, Math.round(Number(input.value) || 14)));
+        save(); render();
+        return;
+      }
+      const metric = team().metrics[Number(input.dataset.index)];
+      if (input.dataset.setting === "name") metric.name = input.value.trim() || `Metric ${Number(input.dataset.index) + 1}`;
+      else if (input.dataset.setting === "type") {
+        const nextType = input.value;
+        if (!["currency","percent","number","decimal"].includes(nextType)) return;
+        metric.type = nextType; // Presentation format only. Never rescale stored actuals or targets.
+      }
+      else if (input.dataset.setting === "weight") metric.weight = inputValue(input.value, "number", true);
+      else metric.target = inputValue(input.value, metric.type);
+      save(); render();
+    });
+
+    document.getElementById("settings").addEventListener("input", event => {
+      const input = event.target.closest("[data-setting]");
+      if (!input) return;
+      if (input.dataset.setting === "windowDays") {
+        state.windowDays = Math.max(1, Math.min(365, Math.round(Number(input.value) || 14)));
+        save();
+        renderSummary();
+        return;
+      }
+      if (input.dataset.setting === "name" || input.dataset.setting === "type") return;
+      const metric = team().metrics[Number(input.dataset.index)];
+      if (input.dataset.setting === "weight") metric.weight = inputValue(input.value, "number", true);
+      else metric.target = inputValue(input.value, metric.type);
+      save();
+      renderSummary();
+      renderWarning();
+    });
+
+    document.getElementById("toggleSettings").addEventListener("click", () => {
+      settingsOpen = !settingsOpen;
+      renderSettings();
+    });
+
+    document.getElementById("addTech").addEventListener("click", () => {
+      const name = prompt(`New ${team().label} technician name`);
+      if (!name?.trim()) return;
+      const tech = { id: makeId(), name: name.trim(), actuals: team().metrics.map(() => 0) };
+      team().technicians.push(tech);
+      openTech = tech.id;
+      save(); render();
+    });
+
+    function normalizedHeader(value) {
+      return String(value ?? "").trim().toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    }
+
+    // Return null for missing or invalid values. A source zero is a real zero.
+    function readImportedNumber(raw, type) {
+      if (raw === null || raw === undefined || String(raw).trim() === "") return null;
+      if (typeof raw === "number") return Number.isFinite(raw) && raw >= 0 ? raw : null;
+      const str = String(raw).trim();
+      const n = Number(str.replace(/[$,\s]/g, "").replace("%", ""));
+      if (!Number.isFinite(n) || n < 0) return null;
+      return type === "percent" && str.includes("%") ? n / 100 : n;
+    }
+
+    const importedNameAliases = ["name", "technician", "technician name", "tech", "tech name", "employee", "employee name"];
+    let pendingImport = null;
+
+    function extractImportSections(sheets) {
+      const valid = [];
+      const ignored = [];
+      Object.entries(sheets).forEach(([sheetName, rows]) => {
+        const populated = rows.filter(row => Array.isArray(row) && row.some(cell => String(cell ?? "").trim()));
+        if (!populated.length) { ignored.push(sheetName); return; }
+        const headerIndex = populated.findIndex(row => row.some(cell => importedNameAliases.includes(normalizedHeader(cell))));
+        if (headerIndex < 0) { ignored.push(sheetName); return; } // Filter sheets and report titles are NOT technicians.
+        const headers = populated[headerIndex].map(cell => String(cell ?? "").trim());
+        const nameIndex = headers.findIndex(x => importedNameAliases.includes(normalizedHeader(x)));
+        const names = populated.slice(headerIndex + 1).filter(row => {
+          const name = String(row[nameIndex] ?? "").trim();
+          const v = normalizedHeader(name);
+          return name && !["total", "grand total", "subtotal", "technician performance", "insert tech name here"].includes(v) &&
+            !importedNameAliases.includes(v) && !/^total\b/.test(v);
+        });
+        if (!names.length) { ignored.push(sheetName); return; }
+        valid.push({ sheetName, headers, nameIndex, rows:names });
+      });
+      return { valid, ignored };
+    }
+
+    function inferredMetricFormat(header) {
+      const key = normalizedHeader(header);
+      if (/sales?|revenue|ticket|amount|price|dollars?|average sale/.test(key)) return "currency";
+      if (/rate|conversion|percent|margin|close rate/.test(key)) return "percent";
+      if (/options per|average options|per opportunity/.test(key)) return "decimal";
+      return "number";
+    }
+
+    function reportKpiColumns() {
+      if (!pendingImport) return [];
+      const choices = pendingImport.headers.map((name, i) => ({name:String(name).trim(), index:i}))
+        .filter(x => x.index !== pendingImport.nameIndex && x.name &&
+          !["opportunity", "opportunities", "count", "business unit", "date", "job type"].includes(normalizedHeader(x.name)));
+      const prioritized = ["close rate","tech membership conversion rate","average sale from opportunities","options per opportunity","total sales"];
+      choices.sort((a,b) => {
+        const ai=prioritized.indexOf(normalizedHeader(a.name));
+        const bi=prioritized.indexOf(normalizedHeader(b.name));
+        return (ai<0?100:ai)-(bi<0?100:bi) || a.index-b.index;
+      });
+      return choices.slice(0,5);
+    }
+
+    function showImportReview(fileName, sections) {
+      if (!sections.valid.length) throw new Error("No technician data table with a recognized Name/Technician header was found.");
+      // Combine tables only if their columns are the same. Otherwise require separate imports.
+      const first = sections.valid[0];
+      const sameHeaders = sections.valid.every(section => JSON.stringify(section.headers.map(normalizedHeader)) === JSON.stringify(first.headers.map(normalizedHeader)));
+      if (!sameHeaders) throw new Error("Worksheets have different column layouts. Import them separately as CSV files so each mapping can be reviewed.");
+      if (pendingImport?.createdTeamId) discardProvisionalReportTeam();
+      pendingImport = { fileName, headers:first.headers, rows:sections.valid.flatMap(section => section.rows), ignored:sections.ignored };
+      const destination = document.getElementById("importDestination");
+      destination.innerHTML = state.teamOrder.map(id => `<option value="${escapeAttr(id)}">${escapeHtml(state.teams[id].label)}</option>`).join("");
+      destination.value = state.activeTeam; // Never infer a team from a report's business-unit text.
+      document.getElementById("importExisting").value = "skip";
+      document.getElementById("rememberImportMap").checked = true;
+      document.getElementById("importNames").textContent = pendingImport.rows.map(r => String(r[first.nameIndex]).trim()).join(" · ");
+      pendingImport.nameIndex = first.nameIndex;
+      document.getElementById("importReportInfo").textContent = `${fileName}: ${pendingImport.rows.length} technician rows found in ${sections.valid.map(x=>x.sheetName).join(", ")}. Skipped worksheets: ${sections.ignored.join(", ") || "none"}.`;
+      renderImportMappings();
+      document.getElementById("importReview").hidden = false;
+    }
+
+    // A saved profile belongs to one specific team and one exact report structure.
+    // Metric names also participate in the key so renaming a KPI cannot reuse a stale mapping.
+    function importProfileKey(destinationId) {
+      const signature = {
+        team: destinationId,
+        columns: pendingImport.headers.map(normalizedHeader),
+        nameColumn: pendingImport.nameIndex,
+        metrics: state.teams[destinationId].metrics.map(metric => normalizedHeader(metric.name))
+      };
+      return JSON.stringify(signature);
+    }
+
+    function renderImportMappings() {
+      if (!pendingImport) return;
+      const destinationId = document.getElementById("importDestination").value;
+      const metrics = state.teams[destinationId].metrics;
+      const choices = pendingImport.headers.map((h,i) => i === pendingImport.nameIndex ? null : `<option value="${i}">${escapeHtml(h || `Column ${i+1}`)}</option>`).filter(Boolean).join("");
+      document.getElementById("importMappings").innerHTML = metrics.map((metric,index) => {
+        const exact = pendingImport.headers.findIndex((h,i) => i !== pendingImport.nameIndex && normalizedHeader(h) === normalizedHeader(metric.name));
+        return `<label for="importMap${index}">${escapeHtml(metric.name)}</label><select id="importMap${index}" data-import-map="${index}"><option value="">Not in spreadsheet · leave blank</option>${choices}</select>`;
+      }).join("");
+      const saved = (state.importProfiles || {})[importProfileKey(destinationId)];
+      const status = document.getElementById("savedMappingStatus");
+      if (saved && Array.isArray(saved.mappings) && saved.mappings.length === metrics.length &&
+          saved.mappings.every(value => value === "" || (Number.isInteger(Number(value)) && Number(value) >= 0 && Number(value) < pendingImport.headers.length && Number(value) !== pendingImport.nameIndex))) {
+        saved.mappings.forEach((value,index) => { document.getElementById(`importMap${index}`).value = value; });
+        status.textContent = "Saved mapping loaded for this team and matching report layout. Confirm the KPI names and formats before importing.";
+      } else {
+        metrics.forEach((metric,index) => {
+          const exact = pendingImport.headers.findIndex((h,i) => i !== pendingImport.nameIndex && normalizedHeader(h) === normalizedHeader(metric.name));
+          if (exact >= 0) document.getElementById(`importMap${index}`).value = String(exact);
+        });
+        status.textContent = "No saved mapping for this team and report layout. Exact column names are preselected. Review before importing.";
+      }
+      refreshImportAlert();
+    }
+
+    function refreshImportAlert() {
+      if (!pendingImport) return;
+      const selectors = [...document.querySelectorAll("[data-import-map]")];
+      const selected = selectors.map(el => el.value).filter(Boolean);
+      const duplicates = selected.filter((value,i) => selected.indexOf(value) !== i);
+      const incomplete = selectors.length - selected.length;
+      document.getElementById("importAlert").textContent = duplicates.length
+        ? "One source column is mapped to multiple KPIs. Check the mapping before importing."
+        : `${incomplete} KPI field(s) will remain blank for new technicians. Existing technicians will keep any values in those fields. Missing values are not treated as observed zero.`;
+      document.getElementById("confirmImport").disabled = Boolean(duplicates.length);
+    }
+
+    // A report-created team is provisional until the manager confirms the import.
+    // Canceling the review must not leave an empty team in browser storage.
+    function discardProvisionalReportTeam() {
+      const id = pendingImport?.createdTeamId;
+      if (!id) return;
+      delete state.teams[id];
+      state.teamOrder = state.teamOrder.filter(item => item !== id);
+      if (state.activeTeam === id) state.activeTeam = pendingImport.previousTeamId || state.teamOrder[0];
+      pendingImport.createdTeamId = null;
+    }
+    function finishImportReview(confirmed = false) {
+      if (!confirmed) {
+        discardProvisionalReportTeam();
+        render();
+      }
+      pendingImport = null;
+      document.getElementById("importReview").hidden = true;
+    }
+    document.getElementById("createReportTeam").addEventListener("click", () => {
+      if (!pendingImport) return;
+      const cols=reportKpiColumns();
+      if (!cols.length) { alert("No recognizable KPI columns were found."); return; }
+      const defaultName = pendingImport.fileName.toLowerCase().includes("plumbing") ? "Plumbing Report" : "Imported Team";
+      const name = prompt("Name the new team (the existing team will not change):", defaultName);
+      if (!name?.trim()) return;
+      // If the manager changes their mind and creates another report team, discard the previous draft.
+      if (!pendingImport.previousTeamId) pendingImport.previousTeamId = state.activeTeam;
+      discardProvisionalReportTeam();
+      const id = `team-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,7)}`;
+      const metrics = cols.map(c => ({name:c.name, type:inferredMetricFormat(c.name), target:0, weight:0}));
+      while (metrics.length < 5) metrics.push({name:`Metric ${metrics.length+1}`,type:"number",target:0,weight:0});
+      state.teams[id] = {label:name.trim(),metrics,technicians:[]};
+      state.teamOrder.push(id);
+      state.activeTeam=id;
+      pendingImport.createdTeamId=id;
+      render(); // Do not persist a provisional team before review is confirmed.
+      document.getElementById("importDestination").innerHTML = state.teamOrder.map(key=>`<option value="${escapeAttr(key)}">${escapeHtml(state.teams[key].label)}</option>`).join("");
+      document.getElementById("importDestination").value=id;
+      renderImportMappings();
+      notify("New team created. Review the mapping, then import the report.");
+    });
+
+    document.getElementById("cancelImport").addEventListener("click", finishImportReview);
+    document.getElementById("importDestination").addEventListener("change", renderImportMappings);
+    document.getElementById("importMappings").addEventListener("change", refreshImportAlert);
+
+    document.getElementById("confirmImport").addEventListener("click", () => {
+      if (!pendingImport) return;
+      const destinationId = document.getElementById("importDestination").value;
+      const targetTeam = state.teams[destinationId];
+      const mode = document.getElementById("importExisting").value;
+      const mappings = targetTeam.metrics.map((_,i) => document.getElementById(`importMap${i}`).value);
+      const selected = mappings.filter(Boolean);
+      if (new Set(selected).size !== selected.length) { alert("A spreadsheet column cannot map to two different KPIs."); return; }
+      if (!selected.length && !confirm("No KPI columns are mapped. Import technician names only?")) return;
+      const seen = new Set();
+      let added = 0, updated = 0, skipped = 0, duplicatesInFile = 0;
+      pendingImport.rows.forEach(row => {
+        const name = String(row[pendingImport.nameIndex] ?? "").trim();
+        const key = normalizedHeader(name);
+        if (!key || seen.has(key)) { duplicatesInFile++; return; }
+        seen.add(key);
+        const actuals = targetTeam.metrics.map((metric,index) => mappings[index] === "" ? null : readImportedNumber(row[Number(mappings[index])],metric.type));
+        const existing = targetTeam.technicians.find(x => normalizedHeader(x.name) === key);
+        if (existing) {
+          if (mode === "skip") { skipped++; return; }
+          // Never overwrite existing actuals with an unmatched/empty spreadsheet value.
+          actuals.forEach((actual,index) => { if (actual !== null) existing.actuals[index] = actual; });
+          updated++;
+        } else {
+          targetTeam.technicians.push({ id: makeId(), name, actuals });
+          added++;
+        }
+      });
+      // Persist only a manager-approved mapping, scoped to the team and exact report layout.
+      // Targets, weights, and display types are never read from the spreadsheet or changed here.
+      if (document.getElementById("rememberImportMap").checked) {
+        if (!state.importProfiles || typeof state.importProfiles !== "object") state.importProfiles = {};
+        state.importProfiles[importProfileKey(destinationId)] = { mappings: mappings.slice() };
+      }
+      // If a newly drafted team was not the chosen import destination, discard it.
+      if (pendingImport.createdTeamId && pendingImport.createdTeamId !== destinationId) discardProvisionalReportTeam();
+      // One commit to browser storage only after review and explicit confirmation.
+      const targetName = targetTeam.label;
+      finishImportReview(true);
+      save(); render();
+      notify(`${targetName}: ${added} added, ${updated} updated, ${skipped} existing skipped.`);
+      alert(`Import complete for ${targetName}.\nAdded: ${added}\nUpdated: ${updated}\nExisting skipped: ${skipped}\nDuplicate names in file: ${duplicatesInFile}\nUnmatched or blank KPI values are preserved as missing, not invented zeros.`);
+    });
+
+    async function importTechFile(file) {
+      const extension = file.name.split(".").pop().toLowerCase();
+      let sheets = {};
+      if (extension === "csv") {
+        const text = await file.text();
+        const rows = [];
+        let row = [], field = "", quoted = false;
+        for (let i = 0; i < text.length; i++) {
+          const ch = text[i];
+          if (ch === '"') { if (quoted && text[i+1] === '"') { field += '"'; i++; } else quoted = !quoted; }
+          else if (ch === "," && !quoted) { row.push(field); field = ""; }
+          else if ((ch === "\n" || ch === "\r") && !quoted) { if (ch === "\r" && text[i+1] === "\n") i++; row.push(field); rows.push(row); row = []; field = ""; }
+          else field += ch;
+        }
+        row.push(field); rows.push(row);
+        sheets = { "CSV": rows };
+      } else {
+        if (!window.XLSX) throw new Error("The Excel reader did not load. Connect to the internet and retry, or save the report as CSV.");
+        const workbook = XLSX.read(await file.arrayBuffer(), {type:"array"});
+        workbook.SheetNames.forEach(sheetName => { sheets[sheetName] = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {header:1,defval:"",raw:true}); });
+      }
+      showImportReview(file.name, extractImportSections(sheets));
+    }
+
+    document.getElementById("importTechs").addEventListener("click", () => document.getElementById("techFile").click());
+    document.getElementById("techFile").addEventListener("change", async event => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      try { await importTechFile(file); }
+      catch (error) { alert(error.message || "The technician list could not be imported."); }
+      finally { event.target.value = ""; }
+    });
+
+    document.getElementById("resetData").addEventListener("click", () => {
+      if (!confirm(`Reset the ${team().label} batting order to its starting targets, weights, and technician list?`)) return;
+      const active = state.activeTeam;
+      const label = team().label;
+      state.teams[active] = defaults.teams[active]
+        ? clone(defaults.teams[active])
+        : { label, metrics: clone(defaults.teams.service.metrics), technicians: [] };
+      state.activeTeam = active;
+      openTech = null;
+      save(); render();
+      notify(`${team().label} demo reset.`);
+    });
+
+    function fallbackCopy(text) {
+      const field = document.createElement("textarea");
+      field.value = text;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.appendChild(field);
+      field.select();
+      const copied = document.execCommand("copy");
+      field.remove();
+      return copied;
+    }
+
+    document.getElementById("copyLink").addEventListener("click", () => {
+      const payload = btoa(unescape(encodeURIComponent(JSON.stringify(state))));
+      const link = `${location.href.split("#")[0]}#team=${payload}`;
+      const field = document.getElementById("shareLinkField");
+      field.value = link;
+      document.getElementById("shareModal").hidden = false;
+      field.focus();
+      field.select();
+      if (navigator.clipboard?.writeText) navigator.clipboard.writeText(link).catch(() => {});
+    });
+
+    document.getElementById("closeShare").addEventListener("click", () => {
+      document.getElementById("shareModal").hidden = true;
+    });
+
+    document.getElementById("copyShare").addEventListener("click", () => {
+      const field = document.getElementById("shareLinkField");
+      field.focus();
+      field.select();
+      try {
+        if (fallbackCopy(field.value)) {
+          notify("Team Link copied.");
+          return;
+        }
+      } catch (_) {}
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(field.value)
+          .then(() => notify("Team Link copied."))
+          .catch(() => prompt("Copy this Team Link", field.value));
+      } else {
+        prompt("Copy this Team Link", field.value);
+      }
+    });
+
+    const editorBar = document.getElementById("editorBar");
+    const editorStatus = document.getElementById("editorStatus");
+    const customizer = document.getElementById("customizer");
+    const paletteInputs = [...document.querySelectorAll("[data-color-var]")];
+    let editing = false;
+    let customizationDirty = false;
+
+    function setEditorStatus(message) {
+      editorStatus.textContent = message;
+    }
+
+    function markCustomizationDirty(message = "Unsaved customization") {
+      customizationDirty = true;
+      setEditorStatus(message);
+      document.getElementById("editToggle").textContent = editing ? "Finish editing" : "Customize tool · unsaved";
+    }
+
+    function syncMarketSettings() {
+      paletteInputs.forEach(input => {
+        input.value = customization.palette?.[input.dataset.colorVar] || DEFAULT_CUSTOMIZATION.palette[input.dataset.colorVar];
+      });
+      document.getElementById("topLabel").value = customization.topLabel;
+      document.getElementById("averageLabel").value = customization.averageLabel;
+      document.getElementById("windowLabel").value = customization.windowLabel;
+      document.getElementById("logoAlt").value = customization.logoAlt;
+    }
+
+    function setEditing(enabled) {
+      editing = enabled;
+      document.body.classList.toggle("editing", enabled);
+      editorBar.hidden = !enabled;
+      document.getElementById("editToggle").setAttribute("aria-pressed", String(enabled));
+      document.getElementById("editToggle").textContent = enabled ? "Finish editing" : (customizationDirty ? "Customize tool · unsaved" : "Customize tool");
+      copyTargets.forEach(element => {
+        if (enabled) {
+          element.setAttribute("contenteditable", "true");
+          element.setAttribute("spellcheck", "true");
+          element.setAttribute("data-editor-target", "");
+        } else {
+          element.removeAttribute("contenteditable");
+          element.removeAttribute("spellcheck");
+          element.removeAttribute("data-editor-target");
+        }
+      });
+      if (enabled) {
+        syncMarketSettings();
+        setEditorStatus("Editing is on");
+      } else {
+        customizer.hidden = true;
+      }
+    }
+
+    function applyMarketSettings() {
+      const topLabel = document.getElementById("topLabel").value.trim();
+      const averageLabel = document.getElementById("averageLabel").value.trim();
+      const windowLabel = document.getElementById("windowLabel").value.trim();
+      if (!topLabel || !averageLabel || !windowLabel) {
+        alert("Every display label needs a value.");
+        return;
+      }
+      customization.topLabel = topLabel;
+      customization.averageLabel = averageLabel;
+      customization.windowLabel = windowLabel;
+      customization.logoAlt = document.getElementById("logoAlt").value.trim() || DEFAULT_CUSTOMIZATION.logoAlt;
+      save();
+      renderLogo();
+      render();
+      customizer.hidden = true;
+      markCustomizationDirty("Market settings applied · save or download to keep them");
+    }
+
+    function saveCustomization() {
+      try {
+        localStorage.setItem(CUSTOMIZATION_KEY, JSON.stringify(customization));
+        localStorage.setItem(COPY_KEY, JSON.stringify(copyTargets.map(element => element.innerHTML)));
+        save();
+        customizationDirty = false;
+        setEditorStatus("Customization saved in this browser");
+      } catch (_) {
+        setEditorStatus("Browser saving is unavailable · download the customized file instead");
+      }
+    }
+
+    function customizedDocument() {
+      document.getElementById("embeddedCustomization").textContent = JSON.stringify(customization).replaceAll("<", "\\u003c");
+      document.getElementById("embeddedCopy").textContent = JSON.stringify(copyTargets.map(element => element.innerHTML)).replaceAll("<", "\\u003c");
+      document.getElementById("embeddedState").textContent = JSON.stringify(state).replaceAll("<", "\\u003c");
+      const documentClone = document.documentElement.cloneNode(true);
+      documentClone.querySelector("body").classList.remove("editing");
+      documentClone.querySelector("#editorBar").setAttribute("hidden", "");
+      documentClone.querySelector("#customizer").setAttribute("hidden", "");
+      const toggle = documentClone.querySelector("#editToggle");
+      toggle.setAttribute("aria-pressed", "false");
+      toggle.textContent = "Customize tool";
+      documentClone.querySelectorAll("[data-editor-target], [contenteditable], [spellcheck]").forEach(element => {
+        element.removeAttribute("data-editor-target");
+        element.removeAttribute("contenteditable");
+        element.removeAttribute("spellcheck");
+      });
+      return "<!doctype html>\n" + documentClone.outerHTML;
+    }
+
+    function downloadCustomizedFile() {
+      saveCustomization();
+      const file = new Blob([customizedDocument()], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(file);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Batting-Order-Customized.html";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      customizationDirty = false;
+      setEditorStatus("Customized batting-order file downloaded");
+    }
+
+    function restoreCustomization() {
+      if (!confirm("Restore the original ARMOR logo, colors, labels, and wording? Technician results will remain.")) return;
+      customization = clone(DEFAULT_CUSTOMIZATION);
+      applyCopy(originalCopy);
+      applyPalette();
+      renderLogo();
+      try {
+        localStorage.removeItem(CUSTOMIZATION_KEY);
+        localStorage.removeItem(COPY_KEY);
+      } catch (_) {}
+      save();
+      render();
+      syncMarketSettings();
+      customizationDirty = false;
+      setEditorStatus("Original ARMOR design restored");
+    }
+
+    document.getElementById("editToggle").addEventListener("click", () => setEditing(!editing));
+    document.getElementById("finishEditing").addEventListener("click", () => setEditing(false));
+    document.getElementById("openCustomizer").addEventListener("click", () => {
+      syncMarketSettings();
+      customizer.hidden = false;
+    });
+    document.getElementById("closeCustomizer").addEventListener("click", () => { customizer.hidden = true; });
+    document.getElementById("applyMarketSettings").addEventListener("click", applyMarketSettings);
+    document.getElementById("saveCustomization").addEventListener("click", saveCustomization);
+    document.getElementById("downloadCustomized").addEventListener("click", downloadCustomizedFile);
+    document.getElementById("restoreCustomization").addEventListener("click", restoreCustomization);
+    document.getElementById("resetLabels").addEventListener("click", () => {
+      document.getElementById("topLabel").value = DEFAULT_CUSTOMIZATION.topLabel;
+      document.getElementById("averageLabel").value = DEFAULT_CUSTOMIZATION.averageLabel;
+      document.getElementById("windowLabel").value = DEFAULT_CUSTOMIZATION.windowLabel;
+      setEditorStatus("Original labels loaded · select Apply settings to use them");
+    });
+    paletteInputs.forEach(input => input.addEventListener("input", () => {
+      customization.palette = { ...customization.palette, [input.dataset.colorVar]: input.value };
+      applyPalette();
+      markCustomizationDirty("Unsaved color changes");
+    }));
+    document.getElementById("resetPalette").addEventListener("click", () => {
+      customization.palette = clone(DEFAULT_CUSTOMIZATION.palette);
+      applyPalette();
+      syncMarketSettings();
+      markCustomizationDirty("Original colors restored · save or download to keep them");
+    });
+    document.getElementById("logoAlt").addEventListener("input", event => {
+      customization.logoAlt = event.target.value.trim() || DEFAULT_CUSTOMIZATION.logoAlt;
+      renderLogo();
+      markCustomizationDirty("Unsaved logo changes");
+    });
+    document.getElementById("logoFile").addEventListener("change", event => {
+      const file = event.target.files?.[0];
+      if (!file) return;
+      if (file.size > 2 * 1024 * 1024) {
+        event.target.value = "";
+        alert("Choose a logo file smaller than 2 MB.");
+        return;
+      }
+      const reader = new FileReader();
+      reader.addEventListener("load", () => {
+        customization.logoData = reader.result;
+        renderLogo();
+        markCustomizationDirty("Logo added · save or download to keep it");
+      });
+      reader.readAsDataURL(file);
+    });
+    document.getElementById("removeLogo").addEventListener("click", () => {
+      customization.logoData = "";
+      document.getElementById("logoFile").value = "";
+      renderLogo();
+      markCustomizationDirty("Original ARMOR logo restored");
+    });
+    copyTargets.forEach(element => element.addEventListener("input", () => {
+      if (editing) markCustomizationDirty("Unsaved wording changes");
+    }));
+    window.addEventListener("beforeunload", event => {
+      if (!customizationDirty) return;
+      event.preventDefault();
+      event.returnValue = "";
+    });
+
+    render();
+  </script>
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true" style="visibility: visible !important;"></grammarly-desktop-integration></html>
